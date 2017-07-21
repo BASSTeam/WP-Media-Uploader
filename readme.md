@@ -34,6 +34,7 @@ $.wpMediaUploader({
     },
 });
 ````
+#### - Changed license from GPL to LGPL, see it below
 
 
 ## License
