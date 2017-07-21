@@ -9,6 +9,33 @@ Features :
 ## Version
 1.01
 
+### Changes from 1.0 version
+#### - Added support for own link wrapping
+```` javascript
+$.wpMediaUploader({
+        linkWrapper : ['<h2>HEADER</h2><div>' /* is the first part */, '</div>' /* and the second */],
+    },
+});
+````
+#### - Added support for previewing multiple selected images
+#### - Input value for all (single/multiple) uploads is a JSON array (if single upload it contains only one value) of image IDs
+#### - You now can use your own callbacks for 'select', 'open' and 'close' events, just pass it to the settings
+```` javascript
+$.wpMediaUploader({
+        onSelect : function(){
+            console.log('Selected');
+        },
+        onOpen : function(){
+            $('#foreground-div').css('display','none');
+        },
+        onClose : function(){
+            $('#foreground-div').css('display','block');
+        },
+    },
+});
+````
+
+
 ## License
 LGPL V3 https://www.gnu.org/licenses/lgpl-3.0.en.html
 
