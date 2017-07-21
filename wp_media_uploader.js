@@ -1,10 +1,13 @@
 /**
- * 
+ *
  * wpMediaUploader v1.0 2016-11-05
  * Copyright (c) 2016 Smartcat
- * 
+ *
+ * Modded by KaMeHb, (c) 2017 BASSTeam prod.
+ * License: LGPL v3
+ *
  */
-( function( $) {
+(function($){
     $.wpMediaUploader = function( options ) {
         
         var settings = $.extend({
@@ -20,22 +23,22 @@
             buttonStyle : { // style the button
                 color : '#fff',
                 background : '#3bafda',
-                fontSize : '16px',                
-                padding : '10px 15px',                
+                fontSize : '16px',
+                padding : '10px 15px',
             },
+            onSelect : function(){},
+            onOpen : function(){},
+            onClose : function(){},
+            linkWrapper : ['<div>', '</div>'],
             
         }, options );
-        
-        
-        $( settings.target ).append( '<a href="#" class="' + settings.buttonClass.replace('.','') + '">' + settings.buttonText + '</a>' );
-        $( settings.target ).append('<div><br><img src="#" style="display: none; width: ' + settings.previewSize + '"/></div>')
-        
-        $( settings.buttonClass ).css( settings.buttonStyle );
-        
-        $('body').on('click', settings.buttonClass, function(e) {
-            
+
+        $( settings.target ).append(settings.linkWrapper[0] + '<a href="#" class="' + settings.buttonClass.replace('.','') + '">' + settings.buttonText + '</a>' + settings.linkWrapper[1]);
+
+        $( settings.target + ' ' + settings.buttonClass ).css( settings.buttonStyle );
+
+        $('body').on('click', settings.target + ' ' + settings.buttonClass, function(e){
             e.preventDefault();
-            var selector = $(this).parent( settings.target );
             var custom_uploader = wp.media({
                 title: settings.uploaderTitle,
                 button: {
@@ -43,17 +46,24 @@
                 },
                 multiple: settings.multiple
             })
-            .on('select', function() {
-                var attachment = custom_uploader.state().get('selection').first().toJSON();
-                selector.find( 'img' ).attr( 'src', attachment.url).show();
-                selector.find( 'input' ).val(attachment.url);
-                if( settings.modal ) {
-                    $('.modal').css( 'overflowY', 'auto');
-                }
+            .on('select', function(){
+                $(settings.target).find('img').remove();
+                !function(){
+                    var attachment = custom_uploader.state().get('selection').first().toJSON(), a = [];
+                    custom_uploader.state().get('selection').forEach(function(e){
+                        a.push(e.id);
+                        $(settings.target).append('<img src="' + e.attributes.url + '" style="height:' + settings.previewSize + '"/>');
+                    });
+                    $(settings.target).find('input').val(JSON.stringify(a));
+                    if( settings.modal ) {
+                        $('.modal').css( 'overflowY', 'auto');
+                    }
+                }();
+                settings.onSelect();
             })
+            .on('close', settings.onClose)
             .open();
+            settings.onOpen();
         });
-        
-        
     }
 })(jQuery);
