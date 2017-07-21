@@ -1,5 +1,7 @@
 
-Create a media upload button button to use in your WordPress admin forms, plugins or themes. 
+Create a media upload button button to use in your WordPress admin forms, plugins or themes.
+
+## [Download latest release](https://github.com/BASSTeam/WP-Media-Uploader/releases/latest)
 
 Features :
 - Easy to setup and use
@@ -101,5 +103,3 @@ $.wpMediaUploader({
 
 ## Developer
 Developed by Bilal Hassan, forked from smartcatdev, modded by KaMeHb
-
-## [Download latest release](https://github.com/BASSTeam/WP-Media-Uploader/releases/latest)
