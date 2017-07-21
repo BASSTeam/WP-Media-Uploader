@@ -7,10 +7,10 @@ Features :
 - Tiny ( less than 3 KB )
 
 ## Version
-1.0
+1.01
 
 ## License
-GPL V3 https://www.gnu.org/licenses/gpl-3.0.en.html
+LGPL V3 https://www.gnu.org/licenses/lgpl-3.0.en.html
 
 ## Basic usage
 
