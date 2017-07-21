@@ -18,7 +18,13 @@ $.wpMediaUploader({
 });
 ````
 #### - Added support for previewing multiple selected images
+![alt text](https://github.com/BASSTeam/WP-Media-Uploader/blob/master/preview-multi-1.jpg "Preview 1")
+![alt text](https://github.com/BASSTeam/WP-Media-Uploader/blob/master/preview-multi-2.jpg "Preview 2")
 #### - Input value for all (single/multiple) uploads is a JSON array (if single upload it contains only one value) of image IDs
+```` HTML
+<input type="hidden" name="image-single" value="[3572]">
+<input type="hidden" name="images" value="[3574,3573]">
+````
 #### - You now can use your own callbacks for 'select', 'open' and 'close' events, just pass it to the settings
 ```` javascript
 $.wpMediaUploader({
