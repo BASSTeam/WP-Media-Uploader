@@ -101,3 +101,5 @@ $.wpMediaUploader({
 
 ## Developer
 Developed by Bilal Hassan, forked from smartcatdev, modded by KaMeHb
+
+## [Download latest release](https://github.com/BASSTeam/WP-Media-Uploader/releases/latest)
